@@ -46,10 +46,25 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="PostMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\SaidWhat.Common.MySql\SaidWhat.Common.MySql.csproj">
+      <Project>{911D51D3-DD84-4D4E-A6E8-B09B8F1C1BA2}</Project>
+      <Name>SaidWhat.Common.MySql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\SaidWhat.Common\SaidWhat.Common.csproj">
+      <Project>{B9725361-EB65-4AA1-AA8E-A5F4C4AADAD0}</Project>
+      <Name>SaidWhat.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaidWhat.Engine\SaidWhat.Engine.csproj">
+      <Project>{642377EF-B088-4697-994E-18BF56894CF8}</Project>
+      <Name>SaidWhat.Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

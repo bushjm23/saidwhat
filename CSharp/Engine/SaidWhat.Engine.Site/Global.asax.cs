@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using SaidWhat.Common.Infrastructure;
+using SaidWhat.Engine.Mappers;
+using SaidWhat.Engine.MySql;
 
 namespace SaidWhat.Engine.Site
 {
@@ -24,7 +27,7 @@ namespace SaidWhat.Engine.Site
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
+                new { controller = "posts", action = "index", id = UrlParameter.Optional } // Parameter defaults
             );
 
         }
@@ -35,6 +38,14 @@ namespace SaidWhat.Engine.Site
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            InitializeContainer();
+        }
+
+
+        void InitializeContainer()
+        {
+            Container.Instance.Set<IPostMapper>(typeof(PostMapper));
         }
     }
 }

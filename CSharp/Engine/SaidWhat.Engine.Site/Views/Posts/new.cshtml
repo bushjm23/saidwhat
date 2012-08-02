@@ -1,0 +1,13 @@
+﻿@model Post
+           
+<h2>Create New</h2>
+
+@Html.ValidationSummary()
+
+@using(Html.BeginForm("create", "posts", FormMethod.Post)) {
+    
+    @Html.LabelFor(p => p.Message)
+    @Html.TextAreaFor(p => p.Message)
+
+    <input type="submit" value="I Said That" />
+}

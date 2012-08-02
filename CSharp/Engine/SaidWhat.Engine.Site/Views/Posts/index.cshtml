@@ -1,0 +1,15 @@
+﻿@model PostIndexModel
+
+<p>
+    @Html.ActionLink("Create New", "new")
+</p>
+
+@foreach (var post in Model.Posts)
+{
+    <div class="post">
+        <blockquote>
+            @post.Message
+        </blockquote>
+    </div>
+}
+    

@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\..\SaidWhat.Engine\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -65,9 +62,11 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PostIndexModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,12 +116,30 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\..\Common\SaidWhat.Common.MySql\SaidWhat.Common.MySql.csproj">
+      <Project>{911D51D3-DD84-4D4E-A6E8-B09B8F1C1BA2}</Project>
+      <Name>SaidWhat.Common.MySql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Common\SaidWhat.Common\SaidWhat.Common.csproj">
+      <Project>{B9725361-EB65-4AA1-AA8E-A5F4C4AADAD0}</Project>
+      <Name>SaidWhat.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaidWhat.Engine.MySql\SaidWhat.Engine.MySql.csproj">
+      <Project>{E6E0BCE0-B9DB-483E-906E-9F29E526137A}</Project>
+      <Name>SaidWhat.Engine.MySql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SaidWhat.Engine\SaidWhat.Engine.csproj">
+      <Project>{642377EF-B088-4697-994E-18BF56894CF8}</Project>
+      <Name>SaidWhat.Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="Views\Posts\index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Posts\new.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
