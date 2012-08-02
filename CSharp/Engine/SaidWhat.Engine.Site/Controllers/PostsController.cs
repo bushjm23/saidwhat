@@ -8,7 +8,7 @@ using SaidWhat.Engine.Site.Models;
 
 namespace SaidWhat.Engine.Site.Controllers
 {
-    public class PostsController : Controller
+    public class PostsController : BaseController
     {        
         public ActionResult Index(uint page = 1, uint pageSize = 25)
         {
@@ -22,7 +22,11 @@ namespace SaidWhat.Engine.Site.Controllers
                 TotalResults = total,
                 Posts = posts
             };
-            return View("index", model);
+
+            if (!IsJsonRequest)
+                return View("index", model);
+            else
+                return Json(model, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult New()
@@ -39,7 +43,11 @@ namespace SaidWhat.Engine.Site.Controllers
                 return View("new", post);
             }             
             post.Save();
-            return RedirectToAction("index");            
+
+            if (!IsJsonRequest)
+                return RedirectToAction("index");
+            else
+                return Json(new { status = "success" });
         }
     }
 }
